@@ -1,4 +1,5 @@
 import {useState, useEffect} from 'react';
+import Head from 'next/head';
 import {useRouter} from 'next/router';
 import {Typography, Divider, Button} from 'antd';
 import 'antd/dist/antd.css';
@@ -19,6 +20,9 @@ function Result() {
 
     return (
         <div style={{width: '100%', maxWidth: 320, height: '100vh', marginTop: 24, marginLeft: 'auto', marginRight: 'auto'}}>
+            <Head>
+                <title>ผลการคำนวณ Carbon Footprint</title>
+            </Head>
             <div style={{width: '88%', marginLeft: 'auto', marginRight: 'auto'}}>
                 <Title level={3}>{name}</Title>
                 <Divider />
@@ -35,7 +39,7 @@ function Result() {
                                         </td>
                                         <td valign="top" align="right" style={{width: '32%', paddingBottom: 8}}>
                                             <small style={{}}>e Kg CO2</small>
-                                            <Title level={5}>{item.cf}</Title>
+                                            <Title level={5}>{parseFloat(item.cf).toFixed(2)}</Title>
                                         </td>
                                     </tr>
                                 );

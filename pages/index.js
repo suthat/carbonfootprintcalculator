@@ -1,4 +1,5 @@
 import {useState} from 'react';
+import Head from 'next/head';
 import {useRouter} from 'next/router';
 import {Typography, Input, Button} from 'antd';
 import 'antd/dist/antd.css';
@@ -18,6 +19,9 @@ function Index() {
 
     return (
         <div style={{width: '100%', maxWidth: 320, height: '100vh', marginLeft: 'auto', marginRight: 'auto', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>
+            <Head>
+                <title>ทดลองคำนวณ Carbon Footprint</title>
+            </Head>
             <div style={{width: '88%', marginLeft: 'auto', marginRight: 'auto'}}>
                 <Title level={4}>ชื่อผลิตภัณฑ์หรือผลงาน</Title>
                 <Input size={'large'} placeholder='ใส่ชื่อผลิตภัณฑ์หรือผลงาน' onChange={(e) => setName(e.target.value)} value={name} />

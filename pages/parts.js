@@ -1,4 +1,5 @@
 import {useState, useEffect} from 'react';
+import Head from 'next/head';
 import {useRouter} from 'next/router';
 import {Typography, Divider, Button} from 'antd';
 import 'antd/dist/antd.css';
@@ -46,6 +47,9 @@ function Parts() {
 
     return (
         <div style={{width: '100%', maxWidth: 320, height: '100vh', marginTop: 24, marginLeft: 'auto', marginRight: 'auto'}}>
+            <Head>
+                <title>ข้อมูลคำนวณ Carbon Footprint สำหรับ{name}</title>
+            </Head>
             <div style={{width: '88%', marginLeft: 'auto', marginRight: 'auto'}}>
                 <Title level={3}>{name}</Title>
                 <Divider />

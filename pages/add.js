@@ -1,4 +1,5 @@
 import {useState, useEffect} from 'react';
+import Head from 'next/head';
 import {useRouter} from 'next/router';
 import {Typography, Divider, Select, Input, Button} from 'antd';
 import 'antd/dist/antd.css';
@@ -47,6 +48,9 @@ function Add() {
 
     return (
         <div style={{width: '100%', maxWidth: 320, height: '100vh', marginTop: 24, marginLeft: 'auto', marginRight: 'auto'}}>
+            <Head>
+                <title>เพิ่มข้อมูลคำนวณ Carbon Footprint</title>
+            </Head>
             <div style={{width: '88%', marginLeft: 'auto', marginRight: 'auto'}}>
                 <Title level={3} style={{marginBottom: 0}}>{name}</Title>
                 <Title level={4} style={{marginTop: 8, color: '#888888'}}>เพิ่มข้อมูลใหม่</Title>
