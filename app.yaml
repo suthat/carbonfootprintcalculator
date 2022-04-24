@@ -1,0 +1,7 @@
+runtime: nodejs14
+service: co2
+
+handlers:
+  - url: /.*
+    script: auto
+    secure: always
