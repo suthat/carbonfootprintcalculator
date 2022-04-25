@@ -1,6 +1,7 @@
 import {useState, useEffect} from 'react';
 import Head from 'next/head';
 import {useRouter} from 'next/router';
+import Image from 'next/image';
 import {Typography, Divider, Button} from 'antd';
 import 'antd/dist/antd.css';
 
@@ -86,6 +87,7 @@ function Result() {
                                 </tr>
                             </tbody>
                         </table>
+                        {/* <Image src="/tree.svg" alt="me" width="64" height="64" /> */}
                     </div>
                     <div style={{marginTop: 16}}>
                         <Button type={'primary'} size={'middle'} style={{width: '100%'}} onClick={() => router.replace('/parts')}>กลับไปหน้าหลัก</Button>
