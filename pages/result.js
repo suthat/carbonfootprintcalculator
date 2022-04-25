@@ -13,6 +13,7 @@ function Result() {
     const [name, setName] = useState();
     const [total, setTotal] = useState(0);
     const [trees, setTrees] = useState(0);
+    const [treeImages, setTreeImages] = useState([]);
     const [data, setData] = useState([]);
 
     useEffect(() => {
@@ -25,7 +26,10 @@ function Result() {
         setData(data);
         setTotal(tmp);
         setTrees(Math.ceil(tmp / 26.63));
-    }, []);
+        for (let i=1; i <= trees; i++) {
+            treeImages.push('tree');
+        }
+    }, [trees]);
 
     return (
         <div style={{width: '100%', maxWidth: 340, height: '100vh', marginTop: 24, marginLeft: 'auto', marginRight: 'auto'}}>
@@ -44,7 +48,7 @@ function Result() {
                                 return (
                                     <tr key={index}>
                                         <td valign="top" style={{width: '64%', paddingBottom: 8}}>
-                                            <small style={{color: '#888888'}}>{item.category}</small>
+                                            <small style={{color: '#888888'}}>{item.category} {item.amount} {item.category !== 'การขนส่ง' ? 'กิโลกรัม' : 'กิโลเมตร'}</small>
                                             <Title level={5}>{item.subCategory}</Title>
                                         </td>
                                         <td valign="top" align="right" style={{width: '32%', paddingBottom: 8}}>
@@ -84,11 +88,25 @@ function Result() {
                                     <td valign="top" align="right" style={{width: '32%', paddingBottom: 8}}>
                                         <small style={{color: '#888888'}}>ต้นไม้ (ปลูก)</small>
                                         <Title level={4}>{trees}</Title>
-                                        <Image src="/tree.svg" alt="tree" width="32" height="32" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colSpan={2} align="right">
+                                        {treeImages.map(tree => (
+                                            <Image src="/tree.svg" alt="tree" width="32" height="32" />
+                                        ))}
                                     </td>
                                 </tr>
                             </tbody>
                         </table>
+                        <p>
+                            <small style={{color: 'red'}}>*</small>
+                            <small style={{color: '#888888'}}>การคำนวณอ้างอิงจาก <a href="http://thaicarbonlabel.tgo.or.th/admin/uploadfiles/emission/ts_b934985782.pdf" target={'_blank'}>Carbon Emission Factors</a> ที่ปรับปรุงล่าสุด ณ​ เดือนมีนาคม 2564 โดยองค์การบริหารก๊่าชเรือนกระจก (อบก.)</small>
+                        </p>
+                        <p>
+                            <small style={{color: 'red'}}>**</small>
+                            <small style={{color: '#888888'}}>การคำนวณ Carbon Offset ใช้ค่าคำนวณจากมาตรฐานการดูดซับและปล่อย CO2 ของต้นไม้อายุ 10 ปี โดยใช้้ค่าเฉลี่ยที่อยู่ระหว่าง 21.77 kg CO2/ต้น ถึง 31.5 kg CO2/ต้น <a href="https://www.encon.be/en/calculation-co2-offsetting-trees" target={'_blank'}>อ่านเพิ่ม</a></small>
+                        </p>
                     </div>
                     <div style={{marginTop: 16}}>
                         <Button type={'primary'} size={'middle'} style={{width: '100%'}} onClick={() => router.replace('/parts')}>กลับไปหน้าหลัก</Button>

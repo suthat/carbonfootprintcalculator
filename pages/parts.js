@@ -76,7 +76,7 @@ function Parts() {
                                             <small style={{}}>{item.category}</small>
                                             <Title level={5}>{item.subCategory}</Title>
                                         </td>
-                                        <td valign="top" style={{width: '24%', paddingBottom: 8}}>
+                                        <td valign="top" align="right" style={{width: '24%', paddingBottom: 8}}>
                                             {item.category === 'การขนส่ง' ? (
                                                 <small style={{}}>กิโลเมตร</small>
                                             ) : (
@@ -84,7 +84,7 @@ function Parts() {
                                             )}
                                             <Title level={5}>{item.amount}</Title>
                                         </td>
-                                        <td valign="top" style={{paddingBottom: 8}}>
+                                        <td valign="top" align="right" style={{paddingBottom: 8}}>
                                             <Button type={'danger'} size={'small'} onClick={() => remove(index)}>x</Button>
                                         </td>
                                     </tr>
