@@ -11,6 +11,7 @@ function Result() {
     const router = useRouter();
     const [name, setName] = useState();
     const [total, setTotal] = useState(0);
+    const [trees, setTrees] = useState(0);
     const [data, setData] = useState([]);
 
     useEffect(() => {
@@ -22,6 +23,7 @@ function Result() {
         });
         setData(data);
         setTotal(tmp);
+        setTrees(Math.ceil(tmp / 26.63));
     }, []);
 
     return (
@@ -64,6 +66,22 @@ function Result() {
                                     <td valign="top" align="right" style={{width: '32%', paddingBottom: 8}}>
                                         <small style={{color: '#888888'}}>e Kg CO2</small>
                                         <Title level={4}>{parseFloat(total).toFixed(2)}</Title>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                        <table style={{width: '100%'}}>
+                            <tbody>
+                                <tr>
+                                    <td valign="top" style={{width: '64%', paddingBottom: 8}}>
+                                        <small style={{color: '#888888'}}>Carbon Offset</small>
+                                        <Title level={4}>การชดเชยคาร์บอน</Title>
+                                    </td>
+                                    <td valign="top" align="right" style={{width: '32%', paddingBottom: 8}}>
+                                        <small style={{color: '#888888'}}>ต้นไม้ (ปลูก)</small>
+                                        <Title level={4}>{trees}</Title>
                                     </td>
                                 </tr>
                             </tbody>
