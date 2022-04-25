@@ -83,11 +83,11 @@ function Result() {
                                     <td valign="top" align="right" style={{width: '32%', paddingBottom: 8}}>
                                         <small style={{color: '#888888'}}>ต้นไม้ (ปลูก)</small>
                                         <Title level={4}>{trees}</Title>
+                                        <Image src="/tree.svg" alt="tree" width="32" height="32" />
                                     </td>
                                 </tr>
                             </tbody>
                         </table>
-                        {/* <Image src="/tree.svg" alt="me" width="64" height="64" /> */}
                     </div>
                     <div style={{marginTop: 16}}>
                         <Button type={'primary'} size={'middle'} style={{width: '100%'}} onClick={() => router.replace('/parts')}>กลับไปหน้าหลัก</Button>
