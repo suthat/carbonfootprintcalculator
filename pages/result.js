@@ -3,7 +3,6 @@ import Head from 'next/head';
 import {useRouter} from 'next/router';
 import {Typography, Divider, Button} from 'antd';
 import 'antd/dist/antd.css';
-import database from '../models';
 
 const {Title} = Typography;
 
@@ -16,13 +15,14 @@ function Result() {
 
     useEffect(() => {
         setName(localStorage.getItem('name'));
-        setData(JSON.parse(localStorage.getItem('data')));
+        let data = JSON.parse(localStorage.getItem('data'));
         let tmp = 0;
         data.map(item => {
             tmp += item.cf;
         });
+        setData(data);
         setTotal(tmp);
-    }, [data]);
+    }, []);
 
     return (
         <div style={{width: '100%', maxWidth: 320, height: '100vh', marginTop: 24, marginLeft: 'auto', marginRight: 'auto'}}>
