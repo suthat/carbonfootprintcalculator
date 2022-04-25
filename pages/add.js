@@ -15,8 +15,11 @@ function Add() {
     const [data, setData] = useState([]);
     const [materials, setMaterials] = useState([]);
     const [category, setCategory] = useState(undefined);
+    const [categoryState, setCategoryState] = useState('');
     const [subCategory, setSubCategory] = useState(undefined);
+    const [subCategoryState, setSubCategoryState] = useState('');
     const [amount, setAmount] = useState('');
+    const [amountState, setAmountState] = useState('');
     const [isTransport, setIsTransport] = useState(false);
 
     useEffect(() => {
@@ -35,15 +38,29 @@ function Add() {
     };
 
     const save = () => {
-        let tmp = data;
-        tmp.push({
-            category: category,
-            subCategory: subCategory,
-            amount: amount,
-        });
-        setData(tmp);
-        localStorage.setItem('data', JSON.stringify(tmp));
-        router.replace('/parts');
+        setCategoryState('');
+        setSubCategoryState('');
+        setAmountState('');
+        if (category === undefined) {
+            setCategoryState('error');
+        }
+        if (subCategory === undefined) {
+            setSubCategoryState('error');
+        }
+        if (amount === '') {
+            setAmountState('error');
+        }
+        if (category !== undefined && subCategory !== undefined && amount !== '') {
+            let tmp = data;
+            tmp.push({
+                category: category,
+                subCategory: subCategory,
+                amount: amount,
+            });
+            setData(tmp);
+            localStorage.setItem('data', JSON.stringify(tmp));
+            router.replace('/parts');
+        }
     };
 
     return (
@@ -57,6 +74,7 @@ function Add() {
                 <Divider />
                 <p style={{marginBottom: 4}}><b style={{color: '#888888'}}>หมวดหมู่</b></p>
                 <Select
+                    status={categoryState}
                     showSearch
                     size={'large'}
                     placeholder="เลือกหมวดหมู่"
@@ -76,6 +94,7 @@ function Add() {
                     <>
                         <p style={{marginTop: 16, marginBottom: 4}}><b style={{color: '#888888'}}>วัสดุ</b></p>
                         <Select
+                            status={subCategoryState}
                             showSearch
                             size={'large'}
                             placeholder="เลือกวัสดุ"
@@ -89,12 +108,13 @@ function Add() {
                             })}
                         </Select>
                         <p style={{marginTop: 16, marginBottom: 4}}><b style={{color: '#888888'}}>น้ำหนัก</b></p>
-                        <Input size={'large'} type={'number'} suffix={'กิโลกรัม'} placeholder='ใส่น้ำหนัก' onChange={(e) => setAmount(e.target.value)} value={amount} />
+                        <Input status={amountState} size={'large'} type={'number'} suffix={'กิโลกรัม'} placeholder='ใส่น้ำหนัก' onChange={(e) => setAmount(e.target.value)} value={amount} />
                     </>
                 ) : (
                     <>
                         <p style={{marginTop: 16, marginBottom: 4}}><b style={{color: '#888888'}}>รูปแบบการขนส่ง</b></p>
                         <Select
+                            status={subCategoryState}
                             showSearch
                             size={'large'}
                             placeholder="เลือกรูปแบบการขนส่ง"
@@ -108,7 +128,7 @@ function Add() {
                             })}
                         </Select>
                         <p style={{marginTop: 16, marginBottom: 4}}><b style={{color: '#888888'}}>ระยะทาง</b></p>
-                        <Input size={'large'} type={'number'} suffix={'กิโลเมตร'} placeholder='ใส่ระยะทาง' onChange={(e) => setAmount(e.target.value)} value={amount} />
+                        <Input status={amountState} size={'large'} type={'number'} suffix={'กิโลเมตร'} placeholder='ใส่ระยะทาง' onChange={(e) => setAmount(e.target.value)} value={amount} />
                     </>
                 )}
                 <div style={{marginTop: 16}}>
@@ -116,6 +136,9 @@ function Add() {
                     <div style={{marginTop: 16}}>
                         <Button type={'secondary'} size={'middle'} onClick={() => router.back()}>ย้อนกลับ</Button>
                     </div>
+                </div>
+                <div style={{marginTop: 40, paddingBottom: 16}}>
+                    <small style={{fontSize: 10, color: '#AAAAAA'}}>&copy;2022 TIM by DO IN THAI Company Limited<br/>All rights reserved.</small>
                 </div>
             </div>
         </div>

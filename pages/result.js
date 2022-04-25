@@ -1,7 +1,7 @@
 import {useState, useEffect} from 'react';
 import Head from 'next/head';
-import {useRouter} from 'next/router';
 import Image from 'next/image';
+import {useRouter} from 'next/router';
 import {Typography, Divider, Button} from 'antd';
 import 'antd/dist/antd.css';
 
@@ -33,6 +33,7 @@ function Result() {
                 <title>ผลการคำนวณ Carbon Footprint</title>
             </Head>
             <div style={{width: '88%', marginLeft: 'auto', marginRight: 'auto'}}>
+                <Image src="/logo.png" alt="logo" width="101" height="48" />
                 <Title level={3}>{name}</Title>
                 <Divider />
                 <strong style={{fontSize: 16, color: '#888888'}}>ผลการคำนวณ Carbon Footprint</strong>
@@ -91,6 +92,9 @@ function Result() {
                     </div>
                     <div style={{marginTop: 16}}>
                         <Button type={'primary'} size={'middle'} style={{width: '100%'}} onClick={() => router.replace('/parts')}>กลับไปหน้าหลัก</Button>
+                    </div>
+                    <div style={{marginTop: 40, paddingBottom: 16}}>
+                        <small style={{fontSize: 10, color: '#AAAAAA'}}>&copy;2022 TIM by DO IN THAI Company Limited<br/>All rights reserved.</small>
                     </div>
                 </div>
             </div>

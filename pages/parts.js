@@ -1,5 +1,6 @@
 import {useState, useEffect} from 'react';
 import Head from 'next/head';
+import Image from 'next/image';
 import {useRouter} from 'next/router';
 import {Typography, Divider, Button} from 'antd';
 import 'antd/dist/antd.css';
@@ -12,10 +13,15 @@ function Parts() {
     const router = useRouter();
     const [name, setName] = useState();
     const [data, setData] = useState([]);
+    const [calculateState, setCalculateState] = useState(false);
 
     useEffect(() => {
         setName(localStorage.getItem('name'));
-        setData(JSON.parse(localStorage.getItem('data')));
+        const tmp = JSON.parse(localStorage.getItem('data'));
+        if (tmp.length > 0) {
+            setCalculateState(true);
+        }
+        setData(tmp);
     }, []);
 
     const remove = (element) => {
@@ -26,6 +32,9 @@ function Parts() {
             }
         });
         setData(tmp);
+        if (tmp.length === 0) {
+            setCalculateState(false);
+        }
         localStorage.setItem('data', JSON.stringify(tmp));
     };
 
@@ -40,7 +49,6 @@ function Parts() {
             });
             return {...item, cf: cf}
         });
-        // console.log(tmp);
         localStorage.setItem('data', JSON.stringify(tmp));
         router.push('/result')
     };
@@ -51,6 +59,7 @@ function Parts() {
                 <title>ข้อมูลคำนวณ Carbon Footprint สำหรับ{name}</title>
             </Head>
             <div style={{width: '88%', marginLeft: 'auto', marginRight: 'auto'}}>
+                <Image src="/logo.png" alt="logo" width="101" height="48" />
                 <Title level={3}>{name}</Title>
                 <Divider />
                 <strong style={{fontSize: 16, color: '#888888'}}>รายการข้อมูลสำหรับคำนวณ Carbon Footprint</strong>
@@ -84,10 +93,13 @@ function Parts() {
                         </tbody>
                     </table>
                     <div style={{marginTop: 16}}>
-                        <Button type={'primary'} size={'large'} style={{width: '100%'}} onClick={() => calculate()}>คำนวณ Carbon Footprint</Button>
+                        <Button disabled={!calculateState} type={'primary'} size={'large'} style={{width: '100%'}} onClick={() => calculate()}>คำนวณ Carbon Footprint</Button>
                         <div style={{marginTop: 16, textAlign: 'center'}}>
                             <Button type={'secondary'} size={'middle'} onClick={() => router.replace('/')}>ล้างข้อมูลและเริ่มต้นใหม่</Button>
                         </div>
+                    </div>
+                    <div style={{marginTop: 40, paddingBottom: 16}}>
+                        <small style={{fontSize: 10, color: '#AAAAAA'}}>&copy;2022 TIM by DO IN THAI Company Limited<br/>All rights reserved.</small>
                     </div>
                 </div>
             </div>
