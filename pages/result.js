@@ -11,12 +11,18 @@ function Result() {
     
     const router = useRouter();
     const [name, setName] = useState();
+    const [total, setTotal] = useState(0);
     const [data, setData] = useState([]);
 
     useEffect(() => {
         setName(localStorage.getItem('name'));
         setData(JSON.parse(localStorage.getItem('data')));
-    }, []);
+        let tmp = 0;
+        data.map(item => {
+            tmp += item.cf;
+        });
+        setTotal(tmp);
+    }, [data]);
 
     return (
         <div style={{width: '100%', maxWidth: 320, height: '100vh', marginTop: 24, marginLeft: 'auto', marginRight: 'auto'}}>
@@ -34,11 +40,11 @@ function Result() {
                                 return (
                                     <tr key={index}>
                                         <td valign="top" style={{width: '64%', paddingBottom: 8}}>
-                                            <small style={{}}>{item.category}</small>
+                                            <small style={{color: '#888888'}}>{item.category}</small>
                                             <Title level={5}>{item.subCategory}</Title>
                                         </td>
                                         <td valign="top" align="right" style={{width: '32%', paddingBottom: 8}}>
-                                            <small style={{}}>e Kg CO2</small>
+                                            <small style={{color: '#888888'}}>e Kg CO2</small>
                                             <Title level={5}>{parseFloat(item.cf).toFixed(2)}</Title>
                                         </td>
                                     </tr>
@@ -46,6 +52,23 @@ function Result() {
                             })}
                         </tbody>
                     </table>
+                    <Divider />
+                    <div>
+                        <table style={{width: '100%'}}>
+                            <tbody>
+                                <tr>
+                                    <td valign="top" style={{width: '64%', paddingBottom: 8}}>
+                                        <small style={{color: '#888888'}}>Carbon Footprint</small>
+                                        <Title level={4}>รอยเท้าคาร์บอน</Title>
+                                    </td>
+                                    <td valign="top" align="right" style={{width: '32%', paddingBottom: 8}}>
+                                        <small style={{color: '#888888'}}>e Kg CO2</small>
+                                        <Title level={4}>{parseFloat(total).toFixed(2)}</Title>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                     <div style={{marginTop: 16}}>
                         <Button type={'primary'} size={'middle'} style={{width: '100%'}} onClick={() => router.replace('/parts')}>กลับไปหน้าหลัก</Button>
                     </div>
