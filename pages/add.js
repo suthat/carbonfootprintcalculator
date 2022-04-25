@@ -64,11 +64,11 @@ function Add() {
     };
 
     return (
-        <div style={{width: '100%', maxWidth: 320, height: '100vh', marginTop: 24, marginLeft: 'auto', marginRight: 'auto'}}>
+        <div style={{width: '100%', maxWidth: 340, height: '100vh', marginTop: 24, marginLeft: 'auto', marginRight: 'auto'}}>
             <Head>
                 <title>เพิ่มข้อมูลคำนวณ Carbon Footprint</title>
             </Head>
-            <div style={{width: '88%', marginLeft: 'auto', marginRight: 'auto'}}>
+            <div style={{width: '96%', marginLeft: 'auto', marginRight: 'auto'}}>
                 <Title level={3} style={{marginBottom: 0}}>{name}</Title>
                 <Title level={4} style={{marginTop: 8, color: '#888888'}}>เพิ่มข้อมูลใหม่</Title>
                 <Divider />
@@ -86,8 +86,12 @@ function Add() {
                     <Option value="กระดาษ">กระดาษ</Option>
                     <Option value="โลหะเหล็ก">โลหะเหล็ก</Option>
                     <Option value="โลหะที่ไม่ใช่เหล็ก">โลหะที่ไม่ใช่เหล็ก</Option>
-                    <Option value="วัสดุก่อสร้าง">วัสดุก่อสร้าง</Option>
+                    <Option value="ไม้">ไม้</Option>
+                    <Option value="สิ่งทอ">สิ่งทอ</Option>
+                    <Option value="ยาง">ยาง</Option>
                     <Option value="แก้วและกระจก">แก้วและกระจก</Option>
+                    <Option value="วัสดุก่อสร้าง">วัสดุก่อสร้าง</Option>
+                    <Option value="พลังงาน">พลังงาน</Option>
                     <Option value="การขนส่ง">การขนส่ง</Option>
                 </Select>
                 {!isTransport ? (

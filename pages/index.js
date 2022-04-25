@@ -25,11 +25,11 @@ function Index() {
     };
 
     return (
-        <div style={{width: '100%', maxWidth: 320, minHeight: '100vh', marginLeft: 'auto', marginRight: 'auto', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>
+        <div style={{width: '100%', maxWidth: 340, minHeight: '100vh', marginLeft: 'auto', marginRight: 'auto', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>
             <Head>
                 <title>ทดลองคำนวณ Carbon Footprint</title>
             </Head>
-            <div style={{width: '88%', marginLeft: 'auto', marginRight: 'auto'}}>
+            <div style={{width: '96%', marginLeft: 'auto', marginRight: 'auto'}}>
                 <div style={{marginBottom: 32}}>
                     <Image src="/logo.png" alt="logo" width="152" height="72" />
                 </div>

@@ -28,11 +28,11 @@ function Result() {
     }, []);
 
     return (
-        <div style={{width: '100%', maxWidth: 320, height: '100vh', marginTop: 24, marginLeft: 'auto', marginRight: 'auto'}}>
+        <div style={{width: '100%', maxWidth: 340, height: '100vh', marginTop: 24, marginLeft: 'auto', marginRight: 'auto'}}>
             <Head>
                 <title>ผลการคำนวณ Carbon Footprint</title>
             </Head>
-            <div style={{width: '88%', marginLeft: 'auto', marginRight: 'auto'}}>
+            <div style={{width: '96%', marginLeft: 'auto', marginRight: 'auto'}}>
                 <Image src="/logo.png" alt="logo" width="101" height="48" />
                 <Title level={3}>{name}</Title>
                 <Divider />
