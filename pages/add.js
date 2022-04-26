@@ -69,7 +69,10 @@ function Add() {
                 <title>เพิ่มข้อมูลคำนวณ Carbon Footprint</title>
             </Head>
             <div style={{width: '96%', marginLeft: 'auto', marginRight: 'auto'}}>
-                <Title level={3} style={{marginBottom: 0}}>{name}</Title>
+                <div style={{marginTop: 4}}>
+                    <small style={{color: '#888888'}}>ผลิตภัณฑ์หรือผลงาน</small>
+                    <Title level={3}>{name}</Title>
+                </div>
                 <Title level={4} style={{marginTop: 8, color: '#888888'}}>เพิ่มข้อมูลใหม่</Title>
                 <Divider />
                 <p style={{marginBottom: 4}}><b style={{color: '#888888'}}>หมวดหมู่</b></p>
@@ -93,6 +96,7 @@ function Add() {
                     <Option value="วัสดุก่อสร้าง">วัสดุก่อสร้าง</Option>
                     <Option value="พลังงาน">พลังงาน</Option>
                     <Option value="การขนส่ง">การขนส่ง</Option>
+                    <Option value="Waste">Waste</Option>
                 </Select>
                 {!isTransport ? (
                     <>

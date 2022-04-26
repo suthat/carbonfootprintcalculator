@@ -33,6 +33,9 @@ function Index() {
                 <div style={{marginBottom: 32}}>
                     <Image src="/logo.png" alt="logo" width="152" height="72" />
                 </div>
+                <div style={{marginBottom: 16, padding: 16, backgroundColor: '#EEEEEE', borderRadius: 4, color: '#646464'}}>
+                    ใช้สำหรับกิจกรรมแลกเปลี่ยนแนวคิด Carbon Footprint งานสถาปนิก65 วันที่ 26 เม.ย. 2565
+                </div>
                 <Title level={4}>ชื่อผลิตภัณฑ์หรือผลงาน</Title>
                 <Input status={nameState} size={'large'} placeholder='ใส่ชื่อผลิตภัณฑ์หรือผลงาน' onPressEnter={() => save()} onChange={(e) => setName(e.target.value)} value={name} />
                 <Button type={'primary'} size={'large'} style={{marginTop: 16}} onClick={() => save()}>ไปต่อ</Button>

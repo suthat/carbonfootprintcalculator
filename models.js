@@ -333,6 +333,16 @@ const database = {
             factor: 0.0529,
         },
     ],
+    'Waste': [
+        {
+            name: 'ขยะมูลฝอยแห้งที่ผ่านการคัดแยก',
+            factor: 0.0159,
+        },
+        {
+            name: 'ขยะมูลฝอยเปียก มูลฝอยสด',
+            factor: 0.1102,
+        },
+    ],
 };
 
 export default database;

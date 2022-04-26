@@ -38,7 +38,10 @@ function Result() {
             </Head>
             <div style={{width: '96%', marginLeft: 'auto', marginRight: 'auto'}}>
                 <Image src="/logo.png" alt="logo" width="101" height="48" />
-                <Title level={3}>{name}</Title>
+                <div style={{marginTop: 4}}>
+                    <small style={{color: '#888888'}}>ผลิตภัณฑ์หรือผลงาน</small>
+                    <Title level={3}>{name}</Title>
+                </div>
                 <Divider />
                 <strong style={{fontSize: 16, color: '#888888'}}>ผลการคำนวณ Carbon Footprint</strong>
                 <div style={{marginTop: 24}}>
